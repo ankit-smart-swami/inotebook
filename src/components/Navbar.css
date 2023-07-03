@@ -1,14 +1,15 @@
 .flex-center{
     display : flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
 }
 
+.flex-around{
+    display : flex;
+    justify-content: space-around;
+}
 .container{
     max-width: 80%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
+    /* margin: auto; */
 }
 
 
@@ -21,7 +22,7 @@
     height: 25px;
 }
 
-.form-control:focus {
+.form-inp:focus {
     color: var(--bs-body-color);
     background-color: var(--bs-body-bg);
     outline: 0;
@@ -31,7 +32,7 @@
 
 .nav-brand{
     text-decoration: none;
-    
+    align-items: center;
 }
 
 .nav-title{
