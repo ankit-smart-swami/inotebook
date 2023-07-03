@@ -1,0 +1,30 @@
+.flex-center{
+    display : flex;
+    justify-content: space-between;
+}
+
+.container{
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand{
+    margin: 0px 15px;
+}
+.nav-items{
+    max-width: 50%;
+}
+
+.nav-logo{
+    width: 30px;
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    outline: 0;
+    border: none;
+    box-shadow: 0 0 0 0.1rem rgb(255 255 255 / 25%);
+}
