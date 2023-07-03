@@ -1,6 +1,7 @@
 .flex-center{
     display : flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .container{
@@ -10,15 +11,14 @@
     justify-content: space-between;
 }
 
-.navbar-brand{
-    margin: 0px 15px;
-}
+
 .nav-items{
     max-width: 50%;
 }
 
 .nav-logo{
-    width: 30px;
+    width: 25px;
+    height: 25px;
 }
 
 .form-control:focus {
@@ -27,4 +27,16 @@
     outline: 0;
     border: none;
     box-shadow: 0 0 0 0.1rem rgb(255 255 255 / 25%);
+}
+
+.nav-brand{
+    text-decoration: none;
+    
+}
+
+.nav-title{
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    margin: 0;
 }

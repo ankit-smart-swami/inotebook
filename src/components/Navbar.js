@@ -1,21 +1,28 @@
 import React from 'react'
 import './Navbar.css';
 import logo from '../Assets/logo512.png';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+    let location = useLocation();
     return (
         <>
             <nav className="bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
                 <nav className="navbar navbar-expand-lg bg-body-tertiary">
                     <div className="container-fluid container">
-                        <img src={logo} alt='nav-logo' className='nav-logo'/>
-                        <a className="navbar-brand" href="/">iNoteBook</a>
+                        <Link to="/" className='flex-center nav-brand'>
+                            <img src={logo} alt='nav-logo' className='nav-logo' />
+                            <h3 className="nav-title">iNoteBook</h3>
+                        </Link>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
                         <div className="collapse navbar-collapse  container" id="navbarNavAltMarkup">
                             <div className="navbar-nav nav-items container">
-                                <a className="nav-link active" aria-current="page" href="/">Home</a>
-                                <a className="nav-link" href="/">Features</a>
-                                <a className="nav-link" href="/">About</a>
-                                <a className="nav-link" href="/">Contact</a>
+                                <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} aria-current="page" to="/">Home</Link>
+                                <Link className={`nav-link ${location.pathname === '/fetures' ? 'active' : ''}`} to="/fetures">Features</Link>
+                                <Link className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} to="/about">About</Link>
+                                <Link className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} to="/contact">Contact</Link>
                             </div>
                             <form className="d-flex" role="search">
                                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
