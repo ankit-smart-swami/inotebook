@@ -6,13 +6,13 @@ import AddNote from './AddNote';
 const Notes = () => {
     const context = useContext(noteContext);
     const { notes, fetchNotes, updateNote } = context;
-    const [noteToUpdate, setNoteToUpdate] = useState({});
+    const [noteToUpdate, setNoteToUpdate] = useState({title: "", description: "", tag: ""});
 
     // Method to get modal inputs and call the update method
     const onUpdate = (event) => {
-        const title = event.target.eTitle.value;
-        const description = event.target.eDescription.value;
-        const tag = event.target.eTag.value;
+        const title = event.target.title.value;
+        const description = event.target.description.value;
+        const tag = event.target.tag.value;
         const id = noteToUpdate._id;
 
         updateNote(id, title, description, tag);
@@ -30,6 +30,9 @@ const Notes = () => {
             <AddNote />
             <div className='my-3'>
                 <h3 >Your notes </h3>
+                <div className='container align-center'>
+                    <h4>{notes.length === 0 && "No notes are there"}</h4>
+                </div>
                 <div className='row my-3'>
                     {notes.map((note) => {
                         return <NoteItem key={note._id} noteToUpdate={noteToUpdate} setNoteToUpdate={setNoteToUpdate} note={note} />
@@ -49,18 +52,18 @@ const Notes = () => {
                             <form className='mt-3 container' onSubmit={onUpdate}>
                                 <div className="mb-3">
                                     <label htmlFor="title" className="form-label">Title</label>
-                                    <input type="text" className="form-control" id="eTitle" name="eTitle" value={noteToUpdate.title} onChange={(event) => { setNoteToUpdate({ ...noteToUpdate, title: event.target.value }) }} aria-describedby="emailHelp" />
+                                    <input minLength={3} type="text" className="form-control" id="title" name="title" value={noteToUpdate.title || " "} onChange={(event) => { setNoteToUpdate({ ...noteToUpdate, title: event.target.value }) }} aria-describedby="emailHelp" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="description" className="form-label">Description</label>
-                                    <input type="text" className="form-control" id="eDescription" name="eDescription" value={noteToUpdate.description} onChange={(event) => { setNoteToUpdate({ ...noteToUpdate, description: event.target.value }) }} />
+                                    <input minLength={5} type="text" className="form-control" id="description" name="description" value={noteToUpdate.description || " "} onChange={(event) => { setNoteToUpdate({ ...noteToUpdate, description: event.target.value }) }} />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="tag" className="form-label">Category</label>
-                                    <input type="text" className="form-control" id="eTag" name="eTag" value={noteToUpdate.tag} onChange={(event) => { setNoteToUpdate({ ...noteToUpdate, tag: event.target.value }) }} />
+                                    <input minLength={3} type="text" className="form-control" id="tag" name="tag" value={noteToUpdate.tag || " "} onChange={(event) => { setNoteToUpdate({ ...noteToUpdate, tag: event.target.value }) }} />
                                 </div>
                                 <button type="button" className="btn btn-secondary mx-2" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary mx-2" data-bs-dismiss="modal">Update Note</button>
+                                <button disabled={noteToUpdate.title.length < 3 || noteToUpdate.description.length < 5 || noteToUpdate.tag.length < 3} type="submit" className="btn btn-primary mx-2" data-bs-dismiss="modal">Update Note</button>
                             </form>
                         </div>
                     </div>
