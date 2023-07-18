@@ -2,7 +2,7 @@ import { useState } from "react";
 import userContext from "./userContext";
 
 const UserState = (props) => {
-    const host = 'http://localhost:5000';
+    const host = 'https://inotebookbackend-gizl.onrender.com/';
     const [alert, setAlert] = useState({type : null, msg : null});
     const [userName, setUserName] = useState("");
 
