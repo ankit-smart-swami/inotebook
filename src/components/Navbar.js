@@ -11,6 +11,7 @@ const Navbar = () => {
     const authToken = localStorage.getItem('auth-token');
     useEffect(() => {
         fetchUserDetails();
+        // eslint-disable-next-line
     }, [])
 
 
