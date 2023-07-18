@@ -6,7 +6,7 @@ const NoteState = (props) => {
   const { showAlert } = useContext(userContext);
   // State to access notes everywhere
   const [notes, setNotes] = useState([]);
-  const host = 'http://localhost:5000';
+  const host = 'https://inotebookbackend-gizl.onrender.com';
 
   //Fetch All Notes
   const fetchNotes = async () => {
