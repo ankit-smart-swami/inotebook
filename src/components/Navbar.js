@@ -10,7 +10,8 @@ const Navbar = () => {
     const { userLogout, userName, fetchUserDetails } = useContext(userContext);
     const authToken = localStorage.getItem('auth-token');
     useEffect(() => {
-        fetchUserDetails();
+        if(authToken.length === 160)
+            fetchUserDetails();
         // eslint-disable-next-line
     }, [])
 
@@ -32,11 +33,11 @@ const Navbar = () => {
                                 <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} aria-current="page" to="/">Home</Link>
                                 <Link className={`nav-link ${location.pathname === '/fetures' ? 'active' : ''}`} to="/fetures">Features</Link>
                                 <Link className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} to="/contact">Contact</Link>
-                                {(authToken === '') && <div className='d-flex flex-around align-items-center' style={{ 'width': '25%' }}>
+                                {(authToken.length < 160) && <div className='d-flex flex-around align-items-center' style={{ 'width': '25%' }}>
                                     <Link className="btn btn-sm btn-outline-success" to="/login">Login</Link>
                                     <Link className="btn btn-sm btn-outline-success" to="/signup">SignUp</Link>
                                 </div>}
-                                {(authToken !== '') && <div className='d-flex align-items-center flex-around' style={{ 'width': '25%' }}>
+                                {(authToken.length === 160) && <div className='d-flex align-items-center flex-around' style={{ 'width': '25%' }}>
                                     <div style={{ 'color': "white" }}>Hii, {userName}</div>
                                     <Link className="btn btn-sm btn-outline-success" to="/login" onClick={userLogout}>Logout</Link>
                                 </div>}

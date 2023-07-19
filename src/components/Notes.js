@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import noteContext from '../context/Notes/noteContext';
+import { useNavigate } from 'react-router-dom';
 import NoteItem from './NoteItem';
 import AddNote from './AddNote';
 
@@ -7,6 +8,9 @@ const Notes = () => {
     const context = useContext(noteContext);
     const { notes, fetchNotes, updateNote } = context;
     const [noteToUpdate, setNoteToUpdate] = useState({title: "", description: "", tag: ""});
+
+    const navigate = useNavigate();
+    const authToken = localStorage.getItem('auth-token') || '';
 
     // Method to get modal inputs and call the update method
     const onUpdate = (event) => {
@@ -21,9 +25,13 @@ const Notes = () => {
 
     // Fetch note will be called on every reload.
     useEffect(() => {
-        fetchNotes();
+        if(authToken.length < 160){
+            navigate('/login');
+        }
+        else
+            fetchNotes();
         // eslint-disable-next-line
-    }, []);
+    }, [authToken]);
 
     return (
         <>

@@ -15,7 +15,7 @@ const Alert = (props) => {
                 <div style={{'--shadow' : alert.type === 'success' ? "#5cb85c": alert.type === 'warning' ? "#f0ad4e" : "#d9534f" }}className={`alert-shadow alert alert-${alert.type} align-items-center`} role="alert">
                     <div className='d-flex flex-row '>
                         <i style={{ 'fontSize': '1.5rem' }} className={alerts[alert.type]}></i>
-                        <strong>&nbsp;{alert.type}&nbsp;:&nbsp;</strong>
+                        <strong>&nbsp;{alert.type === 'success' ? "Success": alert.type === 'warning' ? "Warning" : "Error" }&nbsp;:&nbsp;</strong>
                         <>{alert.msg}</>
                     </div>
                 </div>}
