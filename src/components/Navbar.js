@@ -8,7 +8,7 @@ import userContext from '../context/Auth/userContext';
 const Navbar = () => {
     let location = useLocation();
     const { userLogout, userName, fetchUserDetails } = useContext(userContext);
-    const authToken = localStorage.getItem('auth-token');
+    const authToken = localStorage.getItem('auth-token') || "";
     useEffect(() => {
         if(authToken.length === 160)
             fetchUserDetails();
